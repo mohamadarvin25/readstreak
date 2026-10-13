@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-ink-900 text-zinc-100 antialiased;
+    font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-ink-800 border border-ink-700;
+  }
+  .input {
+    @apply w-full rounded-xl bg-ink-700 border border-ink-600 px-3 py-2.5 text-zinc-100 placeholder:text-ink-400
+      focus:outline-none focus:ring-2 focus:ring-brand/60 focus:border-transparent;
+  }
+  .label {
+    @apply block text-xs font-medium uppercase tracking-wide text-ink-400 mb-1.5;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-semibold transition
+      active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-brand text-white hover:bg-brand-light;
+  }
+  .btn-ghost {
+    @apply btn bg-ink-700 text-zinc-100 hover:bg-ink-600;
+  }
+  .btn-danger {
+    @apply btn bg-red-500/15 text-red-400 hover:bg-red-500/25;
+  }
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -16px;
+  height: 14px;
+  border-radius: 2px;
+  opacity: 0;
+  animation-name: confetti-fall;
+  animation-timing-function: cubic-bezier(0.25, 0.6, 0.5, 1);
+  animation-fill-mode: forwards;
+}
+@keyframes confetti-fall {
+  0% {
+    opacity: 1;
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  100% {
+    opacity: 0.9;
+    translate: 30px 105vh;
+    rotate: 540deg;
+  }
+}
+.celebrate-pop {
+  animation: celebrate-pop 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+@keyframes celebrate-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .celebrate-pop {
+    animation: none;
+  }
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
