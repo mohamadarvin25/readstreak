@@ -17,15 +17,15 @@ Stack: Vite + React + TypeScript + Tailwind, Supabase (login and Postgres), and 
 
 1. Create a free account at <https://supabase.com> and click **New project**.
 2. In the project, open **SQL Editor → New query**. Paste in all of [`supabase/schema.sql`](supabase/schema.sql) and click **Run**.
-3. Open **Project Settings → API** and copy the **Project URL** and the **anon public** key.
+3. Open **Project Settings → API** and copy the **Project URL** and the **publishable** key (`sb_publishable_...`). The older **anon public** key also works; put it in `VITE_SUPABASE_ANON_KEY` instead.
 4. In this folder, copy `.env.example` to `.env` and fill in both values:
    ```
    VITE_SUPABASE_URL=https://xxxx.supabase.co
-   VITE_SUPABASE_ANON_KEY=eyJhbGciOi...
+   VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
    ```
 5. Open **Authentication → URL Configuration**. Set **Site URL** to `http://localhost:5173` for now. Add your deployed URL later (step 3).
 
-The anon key is safe to ship in the frontend. Row-level security in `schema.sql` makes sure each user can only read and write their own rows.
+The publishable key is safe to ship in the frontend. Row-level security in `schema.sql` makes sure each user can only read and write their own rows.
 
 ## 2. Run it locally
 
@@ -44,7 +44,7 @@ Installing a PWA needs HTTPS, so deploy the app (free):
 
 1. Push this folder to a GitHub repo, e.g. `readstreak`.
 2. On <https://vercel.com>, go to **Add New → Project** and import the repo. `vercel.json` already sets the build, so leave the defaults.
-3. Before clicking **Deploy**, open **Environment Variables** and add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. Vite builds these into the bundle. If you add or change them later, you must **Redeploy**.
+3. Before clicking **Deploy**, open **Environment Variables** and add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. Vite builds these into the bundle. If you add or change them later, you must **Redeploy**.
 4. In Supabase, open **Authentication → URL Configuration**. Set **Site URL** to the deployed URL (e.g. `https://readstreak.vercel.app`) and add it under **Redirect URLs**. Without this, the magic link sends you to localhost.
 5. Open the URL on your phone and add it to your home screen:
    - **Android (Chrome):** menu → **Install app**
