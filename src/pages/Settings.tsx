@@ -6,6 +6,7 @@ import { useAuth } from '../hooks/useAuth'
 import { useBooks, useProfile, useSessions, useUpdateProfile } from '../hooks/useData'
 import { ErrorBox, Page, Spinner } from '../components/ui'
 import { ReminderSettings } from '../components/ReminderSettings'
+import { PasswordSettings } from '../components/PasswordSettings'
 
 export default function Settings() {
   const { session } = useAuth()
@@ -130,6 +131,10 @@ export default function Settings() {
 
       <div className="mt-4">
         <ReminderSettings />
+      </div>
+
+      <div className="mt-4">
+        <PasswordSettings />
       </div>
 
       <div className="mt-6 space-y-3">

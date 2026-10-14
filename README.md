@@ -25,6 +25,8 @@ Stack: Vite + React + TypeScript + Tailwind, Supabase (login and Postgres), and 
    ```
 5. Open **Authentication → URL Configuration**. Set **Site URL** to `http://localhost:5173` for now. Add your deployed URL later (step 3).
 
+6. Open **Authentication → Sign In / Providers → Email** and turn off **Confirm email**, then Save. Otherwise every new account must click a confirmation link in an email before it can sign in.
+
 The publishable key is safe to ship in the frontend. Row-level security in `schema.sql` makes sure each user can only read and write their own rows.
 
 ## 2. Run it locally
@@ -36,7 +38,7 @@ npm test           # unit tests for streaks, freezes, records, badges, reminders
 npm run build      # production build in dist/
 ```
 
-Sign in with your email. Supabase sends you a magic link, so there's no password.
+Tap **Create account** and sign up with your email and a password, then sign in with them. You can change your password later under **You → Password**.
 
 ## 3. Put it on your phone
 
