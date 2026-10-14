@@ -1,5 +1,5 @@
 import { format, isToday, isYesterday } from 'date-fns'
-import { Star, Trash2 } from 'lucide-react'
+import { CloudOff, Star, Trash2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { formatDuration, pace } from '../lib/stats'
 import type { ReadingSession } from '../lib/types'
@@ -39,6 +39,11 @@ export function SessionCard({ session, onDelete }: { session: ReadingSession; on
           <div className="text-xs text-ink-400">{when(started)}</div>
           <h3 className="truncate font-semibold">{sessionName(started)}</h3>
           <div className="truncate text-sm text-ink-400">{session.book?.title ?? 'No book'}</div>
+          {session.pending && (
+            <div className="mt-1 inline-flex items-center gap-1 rounded-full bg-ink-700 px-2 py-0.5 text-[11px] text-ink-400">
+              <CloudOff size={11} /> Not synced yet
+            </div>
+          )}
         </div>
         {onDelete && (
           <button

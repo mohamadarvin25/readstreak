@@ -24,6 +24,8 @@ export interface Book {
   started_at: string | null
   finished_at: string | null
   created_at: string
+  /** Created on this device and not synced yet. */
+  pending?: boolean
 }
 
 export interface ReadingSession {
@@ -40,6 +42,8 @@ export interface ReadingSession {
   rating: number | null
   created_at: string
   book?: Pick<Book, 'id' | 'title' | 'author' | 'cover_url' | 'total_pages'> | null
+  /** Saved on this device and not synced yet. */
+  pending?: boolean
 }
 
 /** Minimal shape the pure stats/streak helpers need, so they are easy to test. */

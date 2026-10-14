@@ -3,6 +3,7 @@ import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import { useAuth } from './hooks/useAuth'
 import { useProfile, useUpdateProfile } from './hooks/useData'
 import { BottomNav } from './components/BottomNav'
+import { SyncStatus } from './components/SyncStatus'
 import { Spinner } from './components/ui'
 import Login from './pages/Login'
 import Home from './pages/Home'
@@ -34,6 +35,7 @@ function RequireAuth() {
   return (
     <>
       <TimezoneSync />
+      <SyncStatus />
       <Suspense fallback={<Spinner />}>
         <Outlet />
       </Suspense>

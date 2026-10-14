@@ -88,6 +88,7 @@ Notes:
 - **Streak freeze:** every 7 days in a row earns a freeze, and you can bank up to 2. A freeze automatically covers a missed day so the streak survives. Frozen days show in blue on the heatmap.
 - **Personal records:** longest session, most pages in a session, and best day, week and month, like Strava PRs. Beating one shows on the celebration screen.
 - **Heatmap:** shades each day by minutes read. Gray means no reading, light orange means some reading but under the minimum, medium orange means the minimum was met, and full orange means the daily goal was met.
+- **Offline:** the app opens without a connection and shows your last synced data (kept for 14 days). Sessions, books and deletes are saved on the device first, marked "Not synced yet", and sent to Supabase automatically when you're back online. Settings and reminders need a connection.
 - **Your data:** stored in your Supabase project. Use **You → Export my data** to download a JSON backup.
 
 ## Project layout

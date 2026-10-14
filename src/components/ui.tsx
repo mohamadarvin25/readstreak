@@ -5,7 +5,7 @@ import { ChevronLeft, Loader2, Star } from 'lucide-react'
 export function Page({ title, back, action, children }: { title: string; back?: boolean; action?: ReactNode; children: ReactNode }) {
   const navigate = useNavigate()
   return (
-    <div className="mx-auto max-w-lg px-4 pt-safe pb-28">
+    <div className="mx-auto max-w-lg px-4 pt-safe pb-36">
       <header className="sticky top-0 z-10 -mx-4 mb-4 flex items-center gap-2 bg-ink-900/90 px-4 py-3 backdrop-blur">
         {back && (
           <button onClick={() => navigate(-1)} className="-ml-2 rounded-lg p-1.5 hover:bg-ink-700" aria-label="Back">

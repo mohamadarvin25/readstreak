@@ -3,7 +3,8 @@ import { useQueryClient } from '@tanstack/react-query'
 import { Download, LogOut } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../hooks/useAuth'
-import { useBooks, useProfile, useSessions, useUpdateProfile } from '../hooks/useData'
+import { getOutbox, useBooks, useProfile, useSessions, useUpdateProfile } from '../hooks/useData'
+import { persister } from '../lib/queryClient'
 import { ErrorBox, Page, Spinner } from '../components/ui'
 import { ReminderSettings } from '../components/ReminderSettings'
 import { PasswordSettings } from '../components/PasswordSettings'
@@ -62,8 +63,11 @@ export default function Settings() {
   }
 
   const signOut = async () => {
+    const pending = session ? getOutbox(session.user.id).getSnapshot().ops.length : 0
+    if (pending > 0 && !confirm(`${pending} change(s) haven't synced yet. They'll sync the next time you sign in on this device. Sign out anyway?`)) return
     await supabase.auth.signOut()
     qc.clear()
+    persister.removeClient()
   }
 
   return (
